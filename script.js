@@ -103,7 +103,6 @@ loadTl.to('.load-lines,.load-title,.load-bar-track',{opacity:0,duration:.4,delay
           playLandingSequence();
         }});
 function playLandingSequence(){
-  // build cloud puffs
   buildClouds('cloud-layer-1', 6, 90, 160);
   buildClouds('cloud-layer-2', 8, 50, 110);
 
@@ -116,25 +115,24 @@ function playLandingSequence(){
 
   const tl = gsap.timeline({defaults:{ease:'power2.out'}});
 
-  // aircraft appears, distant, lights on
   tl.to('#aircraft-wrap',{opacity:1,scale:.14,duration:.1})
     .to(['.landing-light'],{opacity:1,duration:1.2},'<')
-    // long final approach — aircraft grows and descends toward the runway
+
     .to('#aircraft-wrap',{scale:0.34, top:'30%', left:'46%', duration:2.6, ease:'power1.inOut'})
     .to('#runway',{opacity:1,duration:1.4},'-=1.8')
     .to('#aircraft-wrap',{scale:0.62, top:'46%', left:'50%', duration:2.2, ease:'power2.inOut'},'-=0.6')
-    // gear drops for landing
+  
     .to('#gear-nose,#gear-main',{opacity:1,duration:.4},'-=1.4')
     .to('#aircraft-wrap',{scale:0.9, top:'58%', duration:1.4, ease:'power2.in'})
-    // flare just before touchdown
+  
     .to('#aircraft-wrap',{scale:1.05, top:'63%', duration:.5, ease:'power1.out'})
     .to('#glow-l,#glow-r',{opacity:.4,duration:.4},'<')
-    // touchdown bounce + wheel smoke + runway rush
+
     .to('#aircraft-wrap',{y:'+=4',duration:.08,repeat:5,yoyo:true},'<')
     .to('#touch-smoke',{opacity:.9,duration:.15},'<')
     .to('#touch-smoke',{opacity:0,duration:1.1},'+=.1')
     .to('#runway',{backgroundPositionY:'+=600',duration:1.6,ease:'power1.in'},'-=1.2')
-    // aircraft rolls out, off-screen, fog closes in
+
     .to('#aircraft-wrap',{scale:1.5, top:'80%', opacity:0, duration:1.4, ease:'power2.in'},'-=0.4')
     .to('#fog-veil',{opacity:1,duration:1},'-=1.2')
     .call(revealHeroText,null,'-=0.3');
@@ -155,7 +153,7 @@ function buildClouds(id,count,minS,maxS){
 }
 
 function revealHeroText(){
-  // split hero name into characters
+
   const nameEl = document.getElementById('hero-name');
   const text = nameEl.textContent;
   nameEl.innerHTML = [...text].map(ch=>`<span class="char" style="opacity:0;transform:translateY(30px)">${ch===' '?'&nbsp;':ch}</span>`).join('');
