@@ -1,41 +1,4 @@
-const PROJECTS =[
-    {
-        code: "p.01",
-        name: "RAKSHAK 2.0",
-        image: "image/rakshak.jpg",
-        tagline: "Smart Helmet — Rider Safety System",
-        status: "PROTOTYPE — ACTIVE",
-        desc: "An intelligent helmet system built to detect crashes, monitor rider vitals, and alert emergency contacts automatically to near by hospitals and police stationsbecause safety gear should think, not just protect.",
-        telemetry: ["SYSTEM STATUS: ONLINE", "SENSORS: ACTIVE", "CONTROL SYSTEM: READY"],
-        overview: "Rakshak 2.0 is a smart helmet built to reduce response time in two-wheeler accidents by combining impact detection, alerting, and rider-monitoring in one wearable unit.",
-        problem: "Delayed emergency response after two-wheeler crashes is a major factor in accident fatalities, especially in areas without immediate access to help.",
-        idea: "Build a helmet that can sense a crash the moment it happens and automatically notify emergency contacts with location data — no phone, no manual action required.",
-        build: "REPLACE: describe your build process — prototyping the shell, wiring the sensor array, writing the firmware, and testing impact-detection thresholds in the field.",
-        tech: ["Arduino / ESP32", "Accelerometer & Gyroscope", "GPS Module", "GSM Module", "C/C++ Firmware"],
-        hardware: ["Impact sensor array", "Microcontroller unit", "GPS + GSM module", "Rechargeable battery pack", "Alcohol/gas sensor"],
-        software: ["Embedded C firmware", "Threshold-based crash detection logic", "SMS/alert dispatch system"],
-        result: "REPLACE: summarize testing results, demo outcomes, or competition/exhibition feedback.",
-        role: "Sole designer and builder — concept, circuit design, firmware, and enclosure."
-  },
-  {
-    code: "p.02",
-    name: "SKYRO",
-    image: "image/skyro.jpg",
-    tagline: "Electric Scooter — Personal Mobility",
-    status: "PROTOTYPE — IN DEVELOPMENT",
-    desc: "A self-built electric scooter platform designed from the ground up — motor, battery, and controller integrated into a lightweight personal mobility system.",
-    telemetry: ["MOTOR: CALIBRATING", "BATTERY: MONITORING", "CONTROLLER: READY"],
-    overview: "Skyro is a ground-up electric scooter build exploring motor control, battery management, and ride dynamics for compact urban mobility.",
-    problem: "REPLACE: what gap or limitation in existing mobility options inspired this build?",
-    idea: "Design and build a lightweight electric scooter from raw components rather than a kit — full control over motor, battery, and controller behavior.",
-    build: "REPLACE: describe chassis design, motor mounting, battery pack assembly, and controller tuning.",
-    tech: ["BLDC Motor Control", "Battery Management (BMS)", "Embedded Controller", "CAD Design"],
-    hardware: ["Hub / BLDC motor", "Li-ion battery pack", "Motor controller", "Throttle & braking system"],
-    software: ["Motor control firmware", "Battery monitoring logic"],
-    result: "REPLACE: summarize test rides, range, top speed, or lessons learned.",
-    role: "Sole designer and builder — mechanical design, electronics integration, and testing."
-  }
-];
+
 const INTERESTS = [
     {icon:"🤖", title:"ROBOTICS", desc:"Building robots,automation system, competition bots, and experimental machines."},
     { icon:"💻", title:"CODING", desc:"Web development, programming, embedded systems, IoT, and software experimentation." },
@@ -53,7 +16,7 @@ const TECH = [
 const ACHIEVEMENTS = [
   { year:"2026 — YEAR", title:"Robo Sumo — Regional Round", cat:"Competition", desc:" result, placement, and what the bot was built to do." },
   { year:"2025 — YEAR", title:"Robo Soccer Championship", cat:"Competition", desc:"team, role, and outcome." },
-  { year:"2025 — YEAR", title:"Robo Race Circuit", cat:"Competition", desc:"REPLACE: your build and race result." },
+  { year:"2025 — YEAR", title:"Robo Race Circuit", cat:"Competition", desc:" your build and race result." },
   { year:"2024 — YEAR", title:"Science & Engineering Exhibition", cat:"Exhibition", desc:"project shown and recognition received." },
   { year:"2024 — YEAR", title:"Embedded Systems Workshop", cat:"Workshop", desc:"what you learned and built." },
   { year:"2023 — YEAR", title:"Certification / Award", cat:"Certification", desc:" certifying body and what it covers." }
