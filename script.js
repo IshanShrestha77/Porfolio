@@ -14,12 +14,12 @@ const TECH = [
 ];
 
 const ACHIEVEMENTS = [
-  { year:"2026 — YEAR", title:"Robo Sumo — Regional Round", cat:"Competition", desc:" result, placement, and what the bot was built to do." },
-  { year:"2025 — YEAR", title:"Robo Soccer Championship", cat:"Competition", desc:"team, role, and outcome." },
-  { year:"2025 — YEAR", title:"Robo Race Circuit", cat:"Competition", desc:" your build and race result." },
+  { year:"2026 — YEAR", title:"Robo Sumo — Regional Round", cat:"Competition", desc:"robo sumo 1st at Kathford ." },
+  { year:"2025 — YEAR", title:"Robo Soccer Championship", cat:"Competition", desc:"team Robox, 1st at robo soccer." },
+  { year:"2025 — YEAR", title:"Robo Race ", cat:"Competition", desc:" title winner ." },
   { year:"2024 — YEAR", title:"Science & Engineering Exhibition", cat:"Exhibition", desc:"project shown and recognition received." },
-  { year:"2024 — YEAR", title:"Embedded Systems Workshop", cat:"Workshop", desc:"what you learned and built." },
-  { year:"2023 — YEAR", title:"Certification / Award", cat:"Certification", desc:" certifying body and what it covers." }
+  { year:"2024 — YEAR", title:"Embedded Systems Workshop", cat:"Workshop", desc:"" },
+  { year:"2023 — YEAR", title:"Certification / Award", cat:"Certification", desc:" " }
 
 ]
 
@@ -102,7 +102,6 @@ loadTl.to('.load-lines,.load-title,.load-bar-track',{opacity:0,duration:.4,delay
           document.getElementById('loading-screen').style.display='none';
           playLandingSequence();
         }});
-/* ---------- CINEMATIC AIRCRAFT LANDING ---------- */
 function playLandingSequence(){
   // build cloud puffs
   buildClouds('cloud-layer-1', 6, 90, 160);
