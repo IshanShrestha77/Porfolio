@@ -1,4 +1,41 @@
-
+const PROJECTS =[
+    {
+        code: "p.01",
+        name: "RAKSHAK 2.0",
+        image: "image/rakshak.jpg",
+        tagline: "Smart Helmet — Rider Safety System",
+        status: "PROTOTYPE — ACTIVE",
+        desc: "An intelligent helmet system built to detect crashes, monitor rider vitals, and alert emergency contacts automatically to near by hospitals and police stationsbecause safety gear should think, not just protect.",
+        telemetry: ["SYSTEM STATUS: ONLINE", "SENSORS: ACTIVE", "CONTROL SYSTEM: READY"],
+        overview: "Rakshak 2.0 is a smart helmet built to reduce response time in two-wheeler accidents by combining impact detection, alerting, and rider-monitoring in one wearable unit.",
+        problem: "Delayed emergency response after two-wheeler crashes is a major factor in accident fatalities, especially in areas without immediate access to help.",
+        idea: "Build a helmet that can sense a crash the moment it happens and automatically notify emergency contacts with location data — no phone, no manual action required.",
+        build: "REPLACE: describe your build process — prototyping the shell, wiring the sensor array, writing the firmware, and testing impact-detection thresholds in the field.",
+        tech: ["Arduino / ESP32", "Accelerometer & Gyroscope", "GPS Module", "GSM Module", "C/C++ Firmware"],
+        hardware: ["Impact sensor array", "Microcontroller unit", "GPS + GSM module", "Rechargeable battery pack", "Alcohol/gas sensor"],
+        software: ["Embedded C firmware", "Threshold-based crash detection logic", "SMS/alert dispatch system"],
+        result: "REPLACE: summarize testing results, demo outcomes, or competition/exhibition feedback.",
+        role: "Sole designer and builder — concept, circuit design, firmware, and enclosure."
+  },
+  {
+    code: "p.02",
+    name: "SKYRO",
+    image: "image/skyro.jpg",
+    tagline: "Electric Scooter — Personal Mobility",
+    status: "PROTOTYPE — IN DEVELOPMENT",
+    desc: "A self-built electric scooter platform designed from the ground up — motor, battery, and controller integrated into a lightweight personal mobility system.",
+    telemetry: ["MOTOR: CALIBRATING", "BATTERY: MONITORING", "CONTROLLER: READY"],
+    overview: "Skyro is a ground-up electric scooter build exploring motor control, battery management, and ride dynamics for compact urban mobility.",
+    problem: "REPLACE: what gap or limitation in existing mobility options inspired this build?",
+    idea: "Design and build a lightweight electric scooter from raw components rather than a kit — full control over motor, battery, and controller behavior.",
+    build: "REPLACE: describe chassis design, motor mounting, battery pack assembly, and controller tuning.",
+    tech: ["BLDC Motor Control", "Battery Management (BMS)", "Embedded Controller", "CAD Design"],
+    hardware: ["Hub / BLDC motor", "Li-ion battery pack", "Motor controller", "Throttle & braking system"],
+    software: ["Motor control firmware", "Battery monitoring logic"],
+    result: "REPLACE: summarize test rides, range, top speed, or lessons learned.",
+    role: "Sole designer and builder — mechanical design, electronics integration, and testing."
+  }
+];
 const INTERESTS = [
     {icon:"🤖", title:"ROBOTICS", desc:"Building robots,automation system, competition bots, and experimental machines."},
     { icon:"💻", title:"CODING", desc:"Web development, programming, embedded systems, IoT, and software experimentation." },
@@ -14,12 +51,12 @@ const TECH = [
 ];
 
 const ACHIEVEMENTS = [
-  { year:"2026 — YEAR", title:"Robo Sumo — Regional Round", cat:"Competition", desc:"robo sumo 1st at Kathford ." },
-  { year:"2025 — YEAR", title:"Robo Soccer Championship", cat:"Competition", desc:"team Robox, 1st at robo soccer." },
-  { year:"2025 — YEAR", title:"Robo Race ", cat:"Competition", desc:" title winner ." },
+  { year:"2026 — YEAR", title:"Robo Sumo — Regional Round", cat:"Competition", desc:" result, placement, and what the bot was built to do." },
+  { year:"2025 — YEAR", title:"Robo Soccer Championship", cat:"Competition", desc:"team, role, and outcome." },
+  { year:"2025 — YEAR", title:"Robo Race Circuit", cat:"Competition", desc:"REPLACE: your build and race result." },
   { year:"2024 — YEAR", title:"Science & Engineering Exhibition", cat:"Exhibition", desc:"project shown and recognition received." },
-  { year:"2024 — YEAR", title:"Embedded Systems Workshop", cat:"Workshop", desc:"" },
-  { year:"2023 — YEAR", title:"Certification / Award", cat:"Certification", desc:" " }
+  { year:"2024 — YEAR", title:"Embedded Systems Workshop", cat:"Workshop", desc:"what you learned and built." },
+  { year:"2023 — YEAR", title:"Certification / Award", cat:"Certification", desc:" certifying body and what it covers." }
 
 ]
 
@@ -77,9 +114,9 @@ function beep(freq,dur,type='sine',vol=0.05){
 const soundToggle = document.getElementById('sound-toggle');
 soundToggle.addEventListener('click',()=>{
   soundon = !soundon;
-  soundToggle.dataset.on = soundOn;
-  soundToggle.textContent = soundOn ? '🔊' : '🔇';
-  if(soundOn) beep(660,0.15,'sine',0.06);
+  soundToggle.dataset.on = soundon;
+  soundToggle.textContent = soundon ? '🔊' : '🔇';
+  if(soundon) beep(660,0.15,'sine',0.06);
 });
 document.querySelectorAll('a,button').forEach(el=>{
   el.addEventListener('mouseenter', ()=>beep(1200,0.04,'sine',0.02));
@@ -102,58 +139,33 @@ loadTl.to('.load-lines,.load-title,.load-bar-track',{opacity:0,duration:.4,delay
           document.getElementById('loading-screen').style.display='none';
           playLandingSequence();
         }});
+/* ---------- HERO LANDING VIDEO ---------- */
 function playLandingSequence(){
-  buildClouds('cloud-layer-1', 6, 90, 160);
-  buildClouds('cloud-layer-2', 8, 50, 110);
-
-  if(reduceMotion){
-    gsap.set(['#aircraft-wrap','#runway','#hero-content','#scroll-cue'],{opacity:1});
-    gsap.set('#aircraft-wrap',{scale:0.5,top:'50%'});
+  const video = document.getElementById('hero-landing-video');
+  let done = false;
+  const finish = () => {
+    if(done) return;
+    done = true;
     revealHeroText();
+  };
+
+  if(reduceMotion || !video){
+    finish();
     return;
   }
 
-  const tl = gsap.timeline({defaults:{ease:'power2.out'}});
-
-  tl.to('#aircraft-wrap',{opacity:1,scale:.14,duration:.1})
-    .to(['.landing-light'],{opacity:1,duration:1.2},'<')
-
-    .to('#aircraft-wrap',{scale:0.34, top:'30%', left:'46%', duration:2.6, ease:'power1.inOut'})
-    .to('#runway',{opacity:1,duration:1.4},'-=1.8')
-    .to('#aircraft-wrap',{scale:0.62, top:'46%', left:'50%', duration:2.2, ease:'power2.inOut'},'-=0.6')
-  
-    .to('#gear-nose,#gear-main',{opacity:1,duration:.4},'-=1.4')
-    .to('#aircraft-wrap',{scale:0.9, top:'58%', duration:1.4, ease:'power2.in'})
-  
-    .to('#aircraft-wrap',{scale:1.05, top:'63%', duration:.5, ease:'power1.out'})
-    .to('#glow-l,#glow-r',{opacity:.4,duration:.4},'<')
-
-    .to('#aircraft-wrap',{y:'+=4',duration:.08,repeat:5,yoyo:true},'<')
-    .to('#touch-smoke',{opacity:.9,duration:.15},'<')
-    .to('#touch-smoke',{opacity:0,duration:1.1},'+=.1')
-    .to('#runway',{backgroundPositionY:'+=600',duration:1.6,ease:'power1.in'},'-=1.2')
-
-    .to('#aircraft-wrap',{scale:1.5, top:'80%', opacity:0, duration:1.4, ease:'power2.in'},'-=0.4')
-    .to('#fog-veil',{opacity:1,duration:1},'-=1.2')
-    .call(revealHeroText,null,'-=0.3');
-}
-
-function buildClouds(id,count,minS,maxS){
-  const layer = document.getElementById(id);
-  for(let i=0;i<count;i++){
-    const c = document.createElement('div');
-    c.className='cloud';
-    const s = minS + Math.random()*(maxS-minS);
-    c.style.width=s+'px'; c.style.height=s*0.5+'px';
-    c.style.top = (10+Math.random()*70)+'%';
-    c.style.left = (Math.random()*100)+'%';
-    layer.appendChild(c);
-    gsap.to(c,{ x: (id.includes('1')?'+=220':'-=180'), duration: 14+Math.random()*10, repeat:-1, yoyo:true, ease:'sine.inOut'});
-  }
+  // reveal hero text once the landing video finishes playing
+  video.addEventListener('ended', finish, {once:true});
+  // safety net in case autoplay is blocked or the video errors out
+  video.addEventListener('error', finish, {once:true});
+  const playPromise = video.play();
+  if(playPromise && playPromise.catch) playPromise.catch(finish);
+  // hard fallback so the site never gets stuck waiting on the video
+  setTimeout(finish, 9000);
 }
 
 function revealHeroText(){
-
+  // split hero name into characters
   const nameEl = document.getElementById('hero-name');
   const text = nameEl.textContent;
   nameEl.innerHTML = [...text].map(ch=>`<span class="char" style="opacity:0;transform:translateY(30px)">${ch===' '?'&nbsp;':ch}</span>`).join('');
